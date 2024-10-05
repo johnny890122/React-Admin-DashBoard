@@ -5,11 +5,12 @@ import { FiSettings } from 'react-icons/fi'
 import { TooltipComponent } from '@syncfusion/ej2-react-popups'
 import { useStateContext } from './contexts/ContextProvider'
 import { Ecommerce, Orders, Employees, Customers, Calendar, Kanban, Editor, ColorPicker, Line, Pie, StackedChart, Area, Bar, ColorMapping, Financial, Pyramid } from './pages'
-
+import ReactGA from 'react-ga4';
 
 export const App = () => {
   const { currentColor, setCurrentColor, currentMode, setCurrentMode, activeMenu, themeSettings, setThemeSettings } = useStateContext()
-  
+  const TRACKING_ID = "G-GE1432TWNV"; // your Measurement ID
+
   useEffect(() => {
     const currentThemeColor = localStorage.getItem('colorMode')
     const currentThemeMode = localStorage.getItem('themeMode')
@@ -17,6 +18,8 @@ export const App = () => {
       setCurrentColor(currentThemeColor)
       setCurrentMode(currentThemeMode)
     }
+    ReactGA.initialize(TRACKING_ID);
+    ReactGA.send({ hitType: "pageview", page: "/landingpage", title: "Landing Page" });
   }, [])
 
   return (
