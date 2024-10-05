@@ -6,6 +6,7 @@ import { TooltipComponent } from '@syncfusion/ej2-react-popups'
 import { useStateContext } from './contexts/ContextProvider'
 import { Ecommerce, Orders, Employees, Customers, Calendar, Kanban, Editor, ColorPicker, Line, Pie, StackedChart, Area, Bar, ColorMapping, Financial, Pyramid } from './pages'
 import ReactGA from 'react-ga4';
+import TagManager from 'react-gtm-module';
 
 export const App = () => {
   const { currentColor, setCurrentColor, currentMode, setCurrentMode, activeMenu, themeSettings, setThemeSettings } = useStateContext()
@@ -18,8 +19,11 @@ export const App = () => {
       setCurrentColor(currentThemeColor)
       setCurrentMode(currentThemeMode)
     }
-    ReactGA.initialize(TRACKING_ID);
-    ReactGA.send({ hitType: "pageview", page: "/landingpage", title: "Landing Page" });
+    ReactGA.initialize(TRACKING_ID)
+    ReactGA.send({ hitType: "pageview", page: "/landingpage", title: "Landing Page" })
+
+    const tagManagerArgs = {gtmId: 'GTM-NGD4ZQ26'}
+    TagManager.initialize(tagManagerArgs)
   }, [])
 
   return (
