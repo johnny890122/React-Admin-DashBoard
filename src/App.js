@@ -21,6 +21,9 @@ export const App = () => {
 
     const tagManagerArgs = {gtmId: 'GTM-NGD4ZQ26'}
     TagManager.initialize(tagManagerArgs)
+
+    ReactGA.initialize('G-GE1432TWNV')
+    ReactGA.send({ userId: '123' });
   }, [])
 
   return (
