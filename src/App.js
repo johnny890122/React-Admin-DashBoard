@@ -23,7 +23,7 @@ export const App = () => {
     TagManager.initialize(tagManagerArgs)
 
     ReactGA.initialize('G-GE1432TWNV')
-    ReactGA.send({ userId: '123' });
+    ReactGA.set({ userId: '123' });
   }, [])
 
   return (
