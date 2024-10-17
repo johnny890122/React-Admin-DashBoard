@@ -7,6 +7,7 @@ import { useStateContext } from './contexts/ContextProvider'
 import { Ecommerce, Orders, Employees, Customers, Calendar, Kanban, Editor, ColorPicker, Line, Pie, StackedChart, Area, Bar, ColorMapping, Financial, Pyramid } from './pages'
 import ReactGA from 'react-ga4';
 import TagManager from 'react-gtm-module';
+import { v4 as uuidv4 } from 'uuid'
 
 export const App = () => {
   const { currentColor, setCurrentColor, currentMode, setCurrentMode, activeMenu, themeSettings, setThemeSettings } = useStateContext()
@@ -23,7 +24,7 @@ export const App = () => {
     TagManager.initialize(tagManagerArgs)
 
     ReactGA.initialize('G-GE1432TWNV')
-    ReactGA.set({ userId: '123' });
+    ReactGA.set({ userId: 'moblab-' + uuidv4() });
   }, [])
 
   return (
