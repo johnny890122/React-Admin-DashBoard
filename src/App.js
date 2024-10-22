@@ -5,13 +5,13 @@ import { FiSettings } from 'react-icons/fi'
 import { TooltipComponent } from '@syncfusion/ej2-react-popups'
 import { useStateContext } from './contexts/ContextProvider'
 import { Ecommerce, Orders, Employees, Customers, Calendar, Kanban, Editor, ColorPicker, Line, Pie, StackedChart, Area, Bar, ColorMapping, Financial, Pyramid } from './pages'
-import ReactGA from 'react-ga4';
+// import ReactGA from 'react-ga4';
 import TagManager from 'react-gtm-module';
 import { v4 as uuidv4 } from 'uuid'
 
 export const App = () => {
   const { currentColor, setCurrentColor, currentMode, setCurrentMode, activeMenu, themeSettings, setThemeSettings } = useStateContext()
-
+  // ss
   useEffect(() => {
     const currentThemeColor = localStorage.getItem('colorMode')
     const currentThemeMode = localStorage.getItem('themeMode')
@@ -23,8 +23,12 @@ export const App = () => {
     const tagManagerArgs = {gtmId: 'GTM-NGD4ZQ26'}
     TagManager.initialize(tagManagerArgs)
 
-    ReactGA.initialize('G-GE1432TWNV')
-    ReactGA.set({ userId: 'moblab-' + uuidv4() });
+        // Push User ID to GTM dataLayer
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ 'userId': 'moblab-' + uuidv4() });
+
+    // ReactGA.initialize('G-GE1432TWNV')
+    // ReactGA.set({ userId:  });
   }, [])
 
   return (
